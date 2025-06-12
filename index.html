@@ -97,7 +97,7 @@
       color: #555;
       position: relative;
       overflow: hidden;
-      max-height: 100px;
+      max-height: 215px;
       transition: max-height 0.3s ease-out;
     }
 
@@ -125,7 +125,7 @@
       const contentBoxes = document.querySelectorAll('.additional-content');
       
       contentBoxes.forEach(box => {
-        if (box.scrollHeight > 100) { // Only add button if content is too long
+        if (box.scrollHeight > 200) { // Only add button if content is too long
           const button = document.createElement('span');
           button.className = 'see-more-btn';
           button.textContent = 'Read More';
@@ -133,7 +133,7 @@
           button.addEventListener('click', () => {
             if (box.classList.contains('expanded')) {
               box.classList.remove('expanded');
-              button.textContent = 'See More';
+              button.textContent = 'Read More';
               // Scroll back to the top of the content box
               box.parentElement.scrollIntoView({ behavior: 'smooth' });
             } else {
