@@ -47,16 +47,16 @@
   
     .content-box {
       background-color: #f8f8f8;
-      padding: 20px;
+      padding: 2vh 2vw;
       border: 1px solid #ddd;
       border-radius: 8px;
       text-align: justify;
       width: 100%;
       box-sizing: border-box;
-      height: 100%; /* Set a fixed height for the content box */
+      height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* Vertically align the content within the box */
+      justify-content:space-around; /* Vertically align the content within the box */
       transition: box-shadow 0.3s ease; /* Add a subtle shadow transition */
     }
   
@@ -92,8 +92,63 @@
     .apply-button:hover {
       background-color: #e1e1e1;
     }
+    .additional-content {
+      margin-bottom: 15px;
+      color: #555;
+      position: relative;
+      overflow: hidden;
+      max-height: 100px;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .additional-content.expanded {
+      max-height: 1000px;
+      transition: max-height 0.5s ease-in;
+    }
+
+    .see-more-btn {
+      display: inline-block;
+      color: #007bff;
+      margin-top: -15px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
   </style>
-  
+  <!-- Template Main JS File -->
+  <script src="main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const contentBoxes = document.querySelectorAll('.additional-content');
+      
+      contentBoxes.forEach(box => {
+        if (box.scrollHeight > 100) { // Only add button if content is too long
+          const button = document.createElement('span');
+          button.className = 'see-more-btn';
+          button.textContent = 'Read More';
+          
+          button.addEventListener('click', () => {
+            if (box.classList.contains('expanded')) {
+              box.classList.remove('expanded');
+              button.textContent = 'See More';
+              // Scroll back to the top of the content box
+              box.parentElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+              box.classList.add('expanded');
+              button.textContent = 'Read Less';
+            }
+          });
+          
+          box.parentElement.insertBefore(button, box.nextSibling);
+        }
+      });
+    });
+  </script>
+
+
 
 
 
@@ -150,7 +205,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <marquee behavior="scroll" direction="left" scrollamount="100" scrolldelay="500" style="color: whitesmoke;">
-      New internships uploaded <b style="color: red;">Apply by 10th may..</b>
+      <b style="color: red;">Short Term Internship </b> will be available soon..
       </marquee>      
     <div class="container">
       <div class="row d-flex align-items-center">
@@ -289,13 +344,11 @@
               <div class="content-box">
                 <div class="additional-content">
                   <p>
-                    Unleash your creativity and technical prowess in our Product Development Internship. 
-                    Gain hands-on experience, work on real-world projects, and emerge ready to contribute to the dynamic 
-                    field of product innovation. Elevate your skills and shape the future with us.
+                    This 12-week Web Development internship provides hands-on training in building modern, responsive, and scalable web applications using cutting-edge technologies like JavaScript (ES6+), React.js, CSS frameworks, and API integrations. Participants will gain practical experience in frontend and backend development, state management, authentication, testing, and performance optimization. The program emphasizes real-world projects and industry best practices to prepare students for professional web development roles.
                   </p>
                 </div>
-                <h4>Product development Internship</h4>
-                <span style="color: rgb(255, 102, 0);">Registrations closed</span>
+                <h4>React & Beyond: Comprehensive Web Development Internship</h4>
+                <span style="color: rgb(255, 102, 0);">Registrations open</span>
                 <a href="https://internship.aicte-india.org/internship-details.php?uid=SU5URVJOU0hJUF8xNzEwMjYyMjY0NjVmMDg3ZjgxNjllZQ==" class="apply-button">Apply</a>
               </div>
             </div>
@@ -305,10 +358,10 @@
             <div class="member" data-aos="fade-up">
               <div class="content-box">
                 <div class="additional-content">
-                  <p>Dive into the world of intelligent systems with our hands-on Machine Learning internship. You'll gain practical experience in developing, training, and optimizing ML models using real-world datasets. Work across the full pipeline - from data preprocessing and feature engineering to model evaluation and deployment.</p>
+                  <p>This 12-week Data Science internship offers comprehensive training in data preprocessing, exploratory analysis, statistical methods, and advanced machine learning techniques. Participants will develop skills in time series analysis, clustering, natural language processing, and production-ready data science pipelines. The program emphasizes hands-on experience with real datasets and industry-standard tools, preparing students for impactful roles in data-driven decision making and analytics.</p>
                 </div>
-                <h4>MACHINE LEARNING</h4> 
-                <span style="color: rgb(255, 102, 0);">Registrations closed</span>
+                <h4>Data Science Internship: Unlocking the Power of Data</h4> 
+                <span style="color: rgb(255, 102, 0);">Registrations open</span>
                 <a href="https://internship.aicte-india.org/internship-details.php?uid=SU5URVJOU0hJUF8xNzA4MTczMDg4NjVkMGE3MjBjYjZjOQ==" class="apply-button">Apply</a>
               </div>
             </div>
@@ -318,13 +371,10 @@
             <div class="member" data-aos="fade-up" data-aos-delay="300">
               <div class="content-box">
                 <div class="additional-content">
-                  <p>Building on the success of our first batch, the Full Stack Internship - Batch 2 is your 
-                    opportunity to further enhance your development capabilities.
-                     Immerse yourself in advanced concepts, tackle real-world projects, and refine your skills 
-                     under the guidance of industry experts.</p>
+                  <p>This 12-week Python Programming internship offers advanced training on modern Python features, asynchronous programming, secure API development, and database integration. Participants will learn best practices for testing, CI/CD automation, containerization, cloud deployment, and application security. Emphasizing hands-on projects and industry standards, the program prepares students to build robust, scalable, and secure Python applications.</p>
                 </div>
-                <h4>FULL STACK INTERNSHIP - II</h4>
-                <span style="color: rgb(255, 102, 0);">Registrations closed</span>
+                <h4>Python Development Bootcamp Internship: Tools and Techniques</h4>
+                <span style="color: rgb(255, 102, 0);">Registrations open</span>
                 <a href="https://internship.aicte-india.org/internship-details.php?uid=SU5URVJOU0hJUF8xNzA4MTcyNjc3NjVkMGE1ODUzMjYwZQ" class="apply-button">Apply</a>
               </div>
             </div>
@@ -339,14 +389,12 @@
             <div class="member" data-aos="fade-up">
               <div class="content-box">
                 <div class="additional-content">
-                  <p>Elevate your technical acumen with our Cloud Internship. 
-                    Learn the ins and outs of cloud computing technologies, including deployment,
-                    scaling, and management of applications. Gain hands-on experience with leading cloud platforms, 
-                    preparing yourself for the demands of modern IT infrastructure. Launch your career to new heights in the cloud.
+                  <p>
+                    This intensive 12-week Machine Learning internship covers the complete ML lifecycle, from problem framing, data engineering, and advanced supervised learning to neural networks and transfer learning. Participants will explore model explainability, fairness, evaluation metrics, and reliability while mastering MLOps tools like experiment tracking, CI/CD, and deployment using modern frameworks such as FastAPI, Docker, and Kubernetes. The program combines theory with hands-on projects to prepare students for real-world AI challenges and scalable ML system development.
                   </p>
                 </div>
-                <h4>CLOUD INTERNSHIP - I</h4>
-                <span style="color: rgb(255, 102, 0);">Registrations closed</span>
+                <h4>Machine Learning Masterclass</h4>
+                <span style="color: rgb(255, 102, 0);">Registrations open</span>
                 <a href="https://internship.aicte-india.org/internship-details.php?uid=SU5URVJOU0hJUF8xNzA2MzcyMDA3NjViNTJiYTc3MzY0MA==" class="apply-button">Apply</a>
               </div>
             </div>
@@ -952,14 +1000,14 @@
                 <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                   <i class="bx bx-envelope"></i>
                   <h3>Email Us</h3>
-                  <p><br>info@TAD Training & Consultancy Services.in</p>
+                  <p><br>Info@tdacs.in <br>Ceo@tadcs.in</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                   <i class="bx bx-phone-call"></i>
                   <h3>Call Us</h3>
-                  <p><br>+919440828708</p>
+                  <p><br>+91 97897 11849</p>
                 </div>
               </div>
             </div>
@@ -1003,8 +1051,8 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <!-- <footer id="footer">
-
+   <footer id="footer">
+<!--
     <div class="footer-top">
 
       <div class="container" data-aos="fade-up">
@@ -1034,17 +1082,9 @@
 
       </div>
     </div> -->
-
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        <center>&copy; Copyright <strong><span>TAD Training & Consultancy Services</span></strong>. All Rights Reserved</center>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/ -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+        <center>&copy; Copyright <strong><span>TAD Training & Consultancy Services</span></strong>. All Rights Reserved by 2025</center>
       </div>
     </div>
   </footer><!-- End Footer -->
